@@ -4,7 +4,12 @@ from .models import (
     Album,
     Song,
     Podcast,
-    PodcastEpisode
+    PodcastEpisode,
+    Playlist,
+    Favorite,
+    ListeningHistory,
+    UserSubscription,
+    Payment
 )
 
 
@@ -35,4 +40,34 @@ class PodcastSerializer(serializers.ModelSerializer):
 class PodcastEpisodeSerializer(serializers.ModelSerializer):
     class Meta:
         model = PodcastEpisode
+        fields = '__all__'
+
+
+class PlaylistSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Playlist
+        fields = '__all__'
+
+
+class FavoriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Favorite
+        fields = '__all__'
+
+
+class ListeningHistorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ListeningHistory
+        fields = '__all__'
+
+
+class UserSubscriptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserSubscription
+        fields = '__all__'
+
+
+class PaymentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Payment
         fields = '__all__'

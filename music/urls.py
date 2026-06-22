@@ -4,7 +4,12 @@ from .views import (
     SingerListView,
     AlbumListView,
     PodcastListView,
-    PodcastEpisodeListView
+    PodcastEpisodeListView,
+    PlaylistListView,
+    FavoriteListView,
+    HistoryListView,
+    SubscriptionListView,
+    PaymentListView,
 )
 
 urlpatterns = [
@@ -13,4 +18,9 @@ urlpatterns = [
     path('albums/', AlbumListView.as_view(), name='albums'),
     path('podcasts/', PodcastListView.as_view(), name='podcasts'),
     path('episodes/', PodcastEpisodeListView.as_view(), name='episodes'),
+    path('playlists/', PlaylistListView.as_view(), name='playlists'),
+    path('favorites/', FavoriteListView.as_view(), name='favorites'),
+    path('history/', HistoryListView.as_view(), name='history'),
+    path('subscriptions/', SubscriptionListView.as_view(), name='subscriptions'),
+    path('payments/', PaymentListView.as_view(), name='payments'),
 ]

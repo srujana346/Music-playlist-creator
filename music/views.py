@@ -5,7 +5,12 @@ from .models import (
     Album,
     Song,
     Podcast,
-    PodcastEpisode
+    PodcastEpisode,
+    Playlist,
+    Favorite,
+    ListeningHistory,
+    UserSubscription,
+    Payment
 )
 
 from .serializers import (
@@ -13,7 +18,12 @@ from .serializers import (
     AlbumSerializer,
     SongSerializer,
     PodcastSerializer,
-    PodcastEpisodeSerializer
+    PodcastEpisodeSerializer,
+    PlaylistSerializer,
+    FavoriteSerializer,
+    ListeningHistorySerializer,
+    UserSubscriptionSerializer,
+    PaymentSerializer
 )
 
 
@@ -40,3 +50,28 @@ class PodcastListView(ListAPIView):
 class PodcastEpisodeListView(ListAPIView):
     queryset = PodcastEpisode.objects.all()
     serializer_class = PodcastEpisodeSerializer
+
+
+class PlaylistListView(ListAPIView):
+    queryset = Playlist.objects.all()
+    serializer_class = PlaylistSerializer
+
+
+class FavoriteListView(ListAPIView):
+    queryset = Favorite.objects.all()
+    serializer_class = FavoriteSerializer
+
+
+class HistoryListView(ListAPIView):
+    queryset = ListeningHistory.objects.all()
+    serializer_class = ListeningHistorySerializer
+
+
+class SubscriptionListView(ListAPIView):
+    queryset = UserSubscription.objects.all()
+    serializer_class = UserSubscriptionSerializer
+
+
+class PaymentListView(ListAPIView):
+    queryset = Payment.objects.all()
+    serializer_class = PaymentSerializer
