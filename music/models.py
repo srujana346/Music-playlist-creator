@@ -18,6 +18,19 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+    def create_superuser(self, email, fullname, password=None):
+        user = self.create_user(
+            email=email,
+            fullname=fullname,
+            password=password
+        )
+
+        user.is_staff = True
+        user.is_superuser = True
+        user.save(using=self._db)
+
+        return user
+
 
 # USER
 class User(AbstractBaseUser):
@@ -27,14 +40,23 @@ class User(AbstractBaseUser):
     profile_image = models.ImageField(upload_to='profiles/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["fullname"]
 
     objects = UserManager()
 
+    
     def __str__(self):
         return self.fullname
 
+    def has_perm(self, perm, obj=None):
+        return self.is_superuser
+
+    def has_module_perms(self, app_label):
+        return self.is_superuser
 
 # SINGER / ARTIST
 class Singer(models.Model):
