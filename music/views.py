@@ -1,4 +1,4 @@
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView, DestroyAPIView
 
 from .models import (
     Singer,
@@ -61,6 +61,13 @@ class FavoriteListView(ListAPIView):
     queryset = Favorite.objects.all()
     serializer_class = FavoriteSerializer
 
+class FavoriteCreateView(CreateAPIView):
+    queryset = Favorite.objects.all()
+    serializer_class = FavoriteSerializer
+
+class FavoriteDeleteView(DestroyAPIView):
+    queryset = Favorite.objects.all()
+    serializer_class = FavoriteSerializer
 
 class HistoryListView(ListAPIView):
     queryset = ListeningHistory.objects.all()
