@@ -204,4 +204,3 @@ Successfully verified:
 - Connect the Favorites APIs with the frontend.
 - Improve validation and error handling.
 
-**Siri**
